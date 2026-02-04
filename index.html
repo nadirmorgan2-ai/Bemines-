@@ -3,94 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For My Favorite Prospect ❤️</title>
+    <title>For The Best Girl in the Universe ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-pink: #ff4d6d; --soft-pink: #fff0f3; --dark-pink: #c9184a; --white: #ffffff; }
-        html, body { height: 100%; margin: 0; overflow-x: hidden; background-color: var(--soft-pink); }
-        body { font-family: 'Montserrat', sans-serif; display: flex; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
-        .container { text-align: center; background: var(--white); padding: 2rem 1.5rem; border-radius: 25px; box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2); width: 100%; max-width: 400px; position: relative; }
-        h1 { font-family: 'Dancing Script', cursive; color: var(--dark-pink); font-size: 2.5rem; margin-bottom: 1.5rem; }
-        .btn-group { display: flex; flex-direction: column; gap: 15px; margin-top: 2rem; }
-        button { padding: 20px; font-size: 1.3rem; border: none; border-radius: 15px; cursor: pointer; font-weight: 600; touch-action: manipulation; }
-        .yes-btn { background-color: var(--primary-pink); color: white; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); }
-        .no-btn { background-color: #f8f9fa; color: #adb5bd; transition: 0.2s; }
-        #customizer { display: none; }
-        .category-title { color: var(--dark-pink); font-weight: 600; margin-top: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
-        .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .option-card { padding: 15px 10px; border: 2px solid var(--soft-pink); border-radius: 12px; font-size: 0.85rem; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
-        .option-card.selected { background-color: var(--primary-pink); color: white; border-color: var(--dark-pink); }
-        #itinerary-box { margin-top: 2rem; padding: 15px; background: var(--soft-pink); border-radius: 15px; border: 2px dashed var(--primary-pink); font-size: 0.95rem; line-height: 1.4; }
+        :root {
+            --primary-pink: #ff4d6d;
+            --soft-pink: #fff0f3;
+            --dark-pink: #c9184a;
+            --white: #ffffff;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); filter: drop-shadow(0 0 0px #ff4d6d); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 15px #ff4d6d); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 0px #ff4d6d); }
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background-color: var(--soft-pink);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: var(--white);
+            padding: 2.5rem 1.5rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            width: 100%;
+            max-width: 450px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Poem Styles */
+        .poem-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            line-height: 1.4;
+            color: var(--dark-pink);
+            margin-bottom: 2rem;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .next-poem-btn {
+            background: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Main Elements */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--dark-pink);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .glowing-heart {
+            font-size: 5rem;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite ease-in-out;
+            margin-bottom: 10px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        button {
+            padding: 18px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .yes-btn { background-color: var(--primary-pink); color: white; }
+        .no-btn { background-color: #eee; color: #999; }
+
+        /* Planner Styles */
+        #customizer {
+            display: none;
+            overflow-y: auto;
+            max-height: 80vh;
+            padding-right: 5px;
+        }
+
+        .category-title {
+            color: var(--dark-pink);
+            font-weight: 600;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .option-card {
+            padding: 12px 5px;
+            border: 2px solid var(--soft-pink);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .option-card span { font-size: 1.5rem; margin-bottom: 5px; }
+        .option-card.selected {
+            background-color: var(--primary-pink);
+            color: white;
+            border-color: var(--dark-pink);
+        }
+
+        #summary-box {
+            margin-top: 1.5rem;
+            padding: 15px;
+            background: var(--soft-pink);
+            border-radius: 15px;
+            border: 2px dashed var(--primary-pink);
+            font-size: 0.9rem;
+        }
+
+        /* Hide Scrollbar but allow scroll */
+        #customizer::-webkit-scrollbar { width: 0px; }
     </style>
 </head>
 <body>
+
     <div class="container" id="main-card">
-        <div id="ask-phase">
-            <div style="font-size: 4rem;">💝</div>
+        <!-- PHASE 1: THE POEM -->
+        <div id="poem-phase">
+            <div class="poem-text" id="poem-display">
+                <!-- Text injected by JS -->
+            </div>
+            <button class="next-poem-btn" onclick="nextStanza()">Next ✨</button>
+        </div>
+
+        <!-- PHASE 2: THE ASK -->
+        <div id="ask-phase" style="display:none;">
+            <div class="glowing-heart">💝</div>
             <h1>Will you be my Valentine?</h1>
+            <p style="color: var(--dark-pink); font-weight:600;">To the Best Girl in the Universe</p>
             <div class="btn-group">
-                <button class="yes-btn" onclick="sayYes()">YES! 💖</button>
-                <button class="no-btn" id="no-button" onclick="moveNo()">No</button>
+                <button class="yes-btn" onclick="showPlanner()">YES! 💖</button>
+                <button class="no-btn" id="no-button" onmouseover="moveNo()" onclick="moveNo()">No</button>
             </div>
         </div>
+
+        <!-- PHASE 3: THE PLANNER -->
         <div id="customizer">
-            <h1>Create Our Date</h1>
-            <div class="category-title">📍 Activity</div>
+            <h1>Our LA Day</h1>
+            
+            <div class="category-title">🌅 Morning Start</div>
             <div class="option-grid">
-                <div class="option-card" onclick="selectItem('activity', 'Ice Skating ⛸️', this)"><span>⛸️</span>Ice Skating</div>
-                <div class="option-card" onclick="selectItem('activity', 'an Arcade Date 🕹️', this)"><span>🕹️</span>Arcade</div>
-                <div class="option-card" onclick="selectItem('activity', 'a Pottery Class 🏺', this)"><span>🏺</span>Pottery</div>
-                <div class="option-card" onclick="selectItem('activity', 'a Cozy Movie Night 🍿', this)"><span>🍿</span>Movie</div>
+                <div class="option-card" onclick="selectItem('morning', 'Coffee at Alfreds ☕', this)"><span>☕</span>Alfred Coffee</div>
+                <div class="option-card" onclick="selectItem('morning', 'Santa Monica Pier 🎡', this)"><span>🎡</span>SM Pier</div>
+                <div class="option-card" onclick="selectItem('morning', 'Flower Market 💐', this)"><span>💐</span>Flower Market</div>
+                <div class="option-card" onclick="selectItem('morning', 'Griffith Hike 🥾', this)"><span>🥾</span>Griffith Park</div>
             </div>
-            <div class="category-title">🍕 Dinner</div>
+
+            <div class="category-title">🏎️ Transportation</div>
             <div class="option-grid">
-                <div class="option-card" onclick="selectItem('dinner', 'Sushi 🍣', this)"><span>🍣</span>Sushi</div>
-                <div class="option-card" onclick="selectItem('dinner', 'Italian 🍝', this)"><span>🍝</span>Italian</div>
-                <div class="option-card" onclick="selectItem('dinner', 'Tacos 🌮', this)"><span>🌮</span>Tacos</div>
-                <div class="option-card" onclick="selectItem('dinner', 'Steakhouse 🥩', this)"><span>🥩</span>Steak</div>
+                <div class="option-card" onclick="selectItem('ride', 'a Luxury Rental 🏎️', this)"><span>🏎️</span>Exotic Car</div>
+                <div class="option-card" onclick="selectItem('ride', 'a Limo 🥂', this)"><span>🥂</span>Limo Service</div>
+                <div class="option-card" onclick="selectItem('ride', 'a Helicopter Tour 🚁', this)"><span>🚁</span>Helicopter</div>
+                <div class="option-card" onclick="selectItem('ride', 'just us cruising 🚗', this)"><span>🚗</span>Just Us</div>
             </div>
-            <div class="category-title">🍦 Dessert</div>
+
+            <div class="category-title">🍔 Lunch / Afternoon</div>
             <div class="option-grid">
-                <div class="option-card" onclick="selectItem('treat', 'Ice Cream 🍦', this)"><span>🍦</span>Ice Cream</div>
-                <div class="option-card" onclick="selectItem('treat', 'Crumbl Cookie 🍪', this)"><span>🍪</span>Cookies</div>
-                <div class="option-card" onclick="selectItem('treat', 'Chocolate Fondue 🍓', this)"><span>🍓</span>Fondue</div>
-                <div class="option-card" onclick="selectItem('treat', 'Cheesecake 🍰', this)"><span>🍰</span>Cake</div>
+                <div class="option-card" onclick="selectItem('lunch', 'The Ivy 🥗', this)"><span>🥗</span>The Ivy</div>
+                <div class="option-card" onclick="selectItem('lunch', 'Nobu Malibu 🍱', this)"><span>🍱</span>Nobu Malibu</div>
+                <div class="option-card" onclick="selectItem('lunch', 'Shopping Spree 🛍️', this)"><span>🛍️</span>Rodeo Drive</div>
+                <div class="option-card" onclick="selectItem('lunch', 'Grand Central Market 🌮', this)"><span>🌮</span>GC Market</div>
             </div>
-            <div id="itinerary-box">
-                <p id="summary">Draft our itinerary above! ✨</p>
+
+            <div class="category-title">✨ Evening Vibe</div>
+            <div class="option-grid">
+                <div class="option-card" onclick="selectItem('night', 'Private Chef 👨‍🍳', this)"><span>👨‍🍳</span>Private Chef</div>
+                <div class="option-card" onclick="selectItem('night', 'Disneyland Trip 🏰', this)"><span>🏰</span>Disneyland</div>
+                <div class="option-card" onclick="selectItem('night', 'Rooftop Lounge 🍸', this)"><span>🍸</span>Perch LA</div>
+                <div class="option-card" onclick="selectItem('night', 'Sunset Boat 🚤', this)"><span>🚤</span>Yacht Cruise</div>
             </div>
-            <button class="yes-btn" style="width: 100%; margin-top: 20px;" onclick="finalize()">Lock It In! 🔒</button>
+
+            <div id="summary-box">
+                <p id="summary">Plan our dream date above! ✨</p>
+            </div>
+
+            <button class="yes-btn" style="width: 100%; margin-top: 20px; margin-bottom: 20px;" onclick="finalize()">Send to Me! 🔒</button>
         </div>
     </div>
+
     <script>
-        let selections = { activity: "____", dinner: "____", treat: "____" };
+        const stanzas = [
+            "Girl,<br>we started as “hey”<br>and turned into hallelujah.",
+            "Just two neighbors<br>sharing sidewalks,<br>sharing glances...",
+            "...sharing that little smile<br>that makes my whole day sit up straight.",
+            "You got the kind of style<br>that makes the world look underdressed.",
+            "Like you don’t just walk outside,<br>you arrive.",
+            "And me?<br>I’m just grateful.",
+            "Grateful like Sunday morning.<br>Like a prayer that actually got answered.",
+            "’Cause when you smile at me<br>my whole life gets brighter...",
+            "...like God leaned down and said,<br>“Yeah… that one’s yours. Don’t fumble.”",
+            "So here I am,<br>real, nervous,<br>and crazy about you.",
+            "Be my Valentine.<br>Let’s fall in love,<br>right here, in the neighborhood where it all began."
+        ];
+
+        let currentStanza = 0;
+        const poemDisplay = document.getElementById('poem-display');
+
+        function updatePoem() {
+            poemDisplay.innerHTML = stanzas[currentStanza];
+        }
+
+        function nextStanza() {
+            if (currentStanza < stanzas.length - 1) {
+                currentStanza++;
+                updatePoem();
+            } else {
+                document.getElementById('poem-phase').style.display = 'none';
+                document.getElementById('ask-phase').style.display = 'block';
+            }
+        }
+
+        updatePoem();
+
         function moveNo() {
             const btn = document.getElementById('no-button');
             const container = document.getElementById('main-card');
-            const maxX = container.clientWidth - btn.clientWidth;
-            const maxY = container.clientHeight - btn.clientHeight;
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
+            const maxX = container.clientWidth - btn.clientWidth - 20;
+            const maxY = container.clientHeight - btn.clientHeight - 20;
             btn.style.position = 'absolute';
-            btn.style.left = randomX + 'px';
-            btn.style.top = randomY + 'px';
+            btn.style.left = Math.random() * maxX + 'px';
+            btn.style.top = Math.random() * maxY + 'px';
         }
-        function sayYes() {
+
+        function showPlanner() {
             document.getElementById('ask-phase').style.display = 'none';
             document.getElementById('customizer').style.display = 'block';
         }
-        function selectItem(category, value, element) {
-            const cards = element.parentElement.querySelectorAll('.option-card');
+
+        let picks = { morning: "____", ride: "____", lunch: "____", night: "____" };
+
+        function selectItem(cat, val, el) {
+            const cards = el.parentElement.querySelectorAll('.option-card');
             cards.forEach(c => c.classList.remove('selected'));
-            element.classList.add('selected');
-            selections[category] = value;
-            document.getElementById('summary').innerHTML = `We'll start with <b>${selections.activity}</b>, then grab some <b>${selections.dinner}</b>, and finish with <b>${selections.treat}</b>!`;
+            el.classList.add('selected');
+            picks[cat] = val;
+            document.getElementById('summary').innerHTML = `We'll start at <b>${picks.morning}</b>, arriving in <b>${picks.ride}</b>. Then we'll head to <b>${picks.lunch}</b> and end with <b>${picks.night}</b>!`;
         }
+
         function finalize() {
-            if (Object.values(selections).includes("____")) {
-                alert("Pick one from each category! ❤️");
+            if (Object.values(picks).includes("____")) {
+                alert("Don't skip! Pick something for every part of our day. ❤️");
             } else {
-                alert("Draft Complete! Screenshot this! 💌");
+                alert("The perfect day for the perfect girl. Screenshot this and send it to me right now! 💌");
             }
         }
     </script>
